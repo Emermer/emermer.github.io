@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photos | Logan Bashore</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #e0e0e0;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        .dropdown-menu {
+            top: calc(100% - 4px);
+        }
+
+        .media-section {
+            padding: 125px 0px 40px;
+            text-align: center;
+            flex: 1;
+            min-height: 70vh;
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .media-section h1 {
+            font-size: clamp(1.8rem, 2.2vw, 2rem);
+            margin-bottom: 35px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .media-section h1.fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .credit {
+            margin-top: 48px;
+            font-weight: 800;
+            font-size: 15px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .credit.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .media-tabs {
+            margin-bottom: 40px;
+            font-weight: bold;
+            font-size: 1.6em;
+            display: inline-flex;
+            gap: 40px;
+            justify-content: center;
+        }
+
+        .media-tabs .tab {
+            color: #e0e0e0;
+            text-decoration: none;
+            padding-bottom: 5px;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+        }
+
+        .media-tabs .tab:not(.active):hover {
+            color: #B0BEC5;
+        }
+
+        .media-tabs .tab.active {
+            border-color: #e0e0e0;
+            font-weight: 700;
+        }
+
+        body.transitions-enabled .media-tabs .tab {
+            transition: border-color 0.3s ease, color 0.3s ease;
+        }
+
+        .media-gallery {
+            column-count: 3;
+            column-gap: 20px;
+        }
+
+        .media-gallery img {
+            width: 100%;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            display: block;
+            object-fit: cover;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            pointer-events: none;
+        }
+
+        .media-gallery img.fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 48px;
+            height: 48px;
+            border: none;
+            border-radius: 50%;
+            background: #e0e0e0;
+            color: #121212;
+            font-size: 1.2em;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+        }
+
+        body.transitions-enabled #backToTop {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        #backToTop.show {
+            display: flex;
+            opacity: 0.9;
+        }
+
+        #backToTop:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 1080px) {
+            .media-gallery {
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 800px) {
+            body {
+                background-position: calc(50% + 10px) center;
+            }
+
+            .dropdown-menu {
+                top: calc(100% + 10px);
+            }
+
+            .media-section h1 {
+                margin-bottom: 45px;
+            }
+
+            .media-gallery {
+                column-count: unset;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .credit {
+                margin-top: 25px;
+                font-size: 12px;
+            }
+
+            .shootmarimba { order: 0; }
+            .happy { order: 3; }
+            .perfect { order: 1; }
+            .awakening { order: 2; }
+            .directors { order: 4; }
+            .otherside { order: 13; }
+            .delotto { order: 7; }
+            .banquet { order: 9; }
+            .halves { order: 10; }
+            .snarebreak { order: 8; }
+            .i3premierelot { order: 5; }
+            .yearn { order: 6; }
+            .tarpontongue { order: 12; }
+            .i3premieretufflot { order: 14; }
+            .sideprofile { order: 11; }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="/" class="logo">Logan Bashore</a>
+
+        <div id="nav-placeholder"></div>
+
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <section class="media-section">
+        <h1>Photos</h1>
+        <div class="media-gallery">
+
+            <img src="../media/IMG_20250409_192300.jpg" class="shootmarimba">
+            <img src="../media/Show-42.jpg" class="perfect">
+            <img src="../media/IMG_20240515_013258_406.jpg" class="delotto">
+            <img src="../media/Lot-17.jpg" class="halves">
+            <img src="../media/lbtonguetsoperehearsal.jpg" class="tarpontongue">
+            <img src="../media/463823374_2838871099623643_4533074778917471468_n_1080.jpg" class="awakening">
+            <img src="../media/IMG_20250417_223509.jpg" class="directors">
+            <img src="../media/Show-30.jpg" class="snarebreak">
+            <img src="../media/Lot-50.jpg" class="i3premieretufflot">
+            <img src="../media/393198248_18395394544014417_3592142793651354062_n.jpg" class="otherside">
+            <img src="../media/Show-5.jpg" class="yearn">
+            <img src="../media/January-158.jpg" class="sideprofile">
+            <img src="../media/PXL_20260415_141950807~2.jpg" class="banquet">
+            <img src="../media/Lot-21.jpg" class="i3premierelot">
+            <img src="../media/Finals-edit.jpg" class="happy">
+
+        </div>
+
+        <div class="credit">Photo credits: BDT Photography, TSLCA Media, Jackson Hendrick, and my mom</div>
+
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+    <button id="backToTop" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('transitions-enabled');
+        });
+
+        window.addEventListener('load', () => {
+
+            const header = document.querySelector('.media-section h1');
+            const images = document.querySelectorAll('.media-gallery img');
+            const credit = document.querySelector('.credit');
+
+            header.classList.add('fade-in');
+
+            setTimeout(() => {
+                images.forEach((img, index) => {
+                    setTimeout(() => {
+                        img.classList.add('fade-in');
+
+                        if (index === images.length - 1) {
+                            setTimeout(() => {
+                                credit.classList.add('show');
+                            }, 100);
+                        }
+                    }, index * 25);
+                });
+            }, 80);
+        });
+
+        const backToTopBtn = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+
+            if (window.scrollY > 150) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+
+        });
+    </script>
+
+    <script src="../js/site.js"></script>
+
+    </body>
+</html>

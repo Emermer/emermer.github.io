@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Rising Home Energy Bills</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+	        padding-top: 15px;
+            background-color: #121212;
+            color: #e0e0e0;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .contact-section {
+            padding: 115px 20px 40px 20px;
+            text-align: center;
+            flex: 1;
+            min-height: 50vh;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .contact-section.fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .contact-section h1 {
+            font-size: clamp(1.8rem, 2.2vw, 2rem);
+            margin-bottom: 10px;
+        }
+
+        .contact-section p {
+            font-size: clamp(0.95rem, 1.05vw, 1.05rem);
+            margin-bottom: 5px;
+        }
+
+        .email-button {
+            background-color: #0066cc;
+            color: #fff;
+            font-size: 1.2em;
+            padding: 10px 45px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .email-button i {
+            margin-right: 10px;
+        }
+
+        .email-button:hover {
+            background-color: #005bb5;
+            transform: scale(1.05);
+        }
+
+        .email-button:focus {
+            outline: none;
+        }
+
+        .igdm-button {
+            background-color: #333333;
+            color: #fff;
+            font-size: 1.1em;
+            padding: 6px 30px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 12px;
+        }
+
+        .igdm-button i {
+            margin-right: 10px;
+        }
+
+        .igdm-button:hover {
+            background-color: #282828;
+            transform: scale(1.05);
+        }
+
+        .igdm-button:focus {
+            outline: none;
+        }
+
+	    .portrait-image-container {
+            margin-top: 30px;
+	        text-align: center;
+	    }
+
+	    .portrait-image {
+            width: clamp(220px, 22vw, 310px);
+	        height: auto;
+	        border-radius: 10px;
+	        object-fit: cover;
+	        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+	        opacity: 0;
+	        transform: translateY(20px);
+	        transition: opacity 0.6s ease, transform 0.6s ease;
+            pointer-events: none;
+	    }
+
+	    .portrait-image.fade-in {
+	        opacity: 1;
+	        transform: translateY(0);
+	    }
+
+        @media (max-width: 1080px) {
+	        body {
+		        padding-top: 0px;
+	        }
+
+            .contact-section {
+                padding: 0px 20px 80px 20px;
+	        }
+
+            .contact-section h1 {
+                margin-top: 4em;
+	        }
+
+            .contact-section p {
+                margin-top: 10px;
+                margin-bottom: 25px;
+            }
+
+            .email-button {
+                font-size: 1.2em;
+                padding: 10px 30px;
+                border-radius: 30px;
+                margin-top: 4px;
+            }
+
+            .igdm-button {
+                font-size: 1em;
+                padding: 6px 20px;
+                border-radius: 30px;
+                margin-top: 12px;
+            }
+
+            .portrait-image-container {
+                margin-top: 32px;
+	        }
+
+	        .portrait-image {
+		        width: 290px;
+	        }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="/" class="logo">Logan Bashore</a>
+
+        <div id="nav-placeholder"></div>
+
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <div class="contact-section">
+        <h1>Contact</h1>
+        <p><b>We'd love to hear from you!</b></p>
+         <p>If you have questions or business-related inquires, don't hesitate to reaching out!</p>
+	<div style="display: flex; flex-direction: column; align-items: center;">
+        <a href="mailto:lbasho2@live.spcollege.edu">
+            <button class="email-button">
+                <i class="fas fa-envelope"></i> Send Us An Email
+            </button>
+        </a>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        window.addEventListener('load', () => {
+            const contactSection = document.querySelector('.contact-section');
+            contactSection.classList.add('fade-in');
+        
+            setTimeout(() => {
+                const images = document.querySelectorAll('.portrait-image');
+                images.forEach((img, index) => {
+                    setTimeout(() => {
+                        img.classList.add('fade-in');
+                    }, index * 25);
+                });
+            }, 80);
+        });
+    </script>
+
+    <script src="../js/site.js"></script>
+    
+    </body>
+</html>

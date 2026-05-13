@@ -24,13 +24,19 @@
         }
 
         .contact-section {
-            padding: 115px 20px 40px 20px;
+            padding: 115px 20px 120px 20px;
             text-align: center;
             flex: 1;
-            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 160px);
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s ease;
         }
 
         .contact-section.fade-in {
@@ -127,36 +133,39 @@
 	    }
 
         @media (max-width: 1080px) {
-	        body {
-		        padding-top: 0px;
-	        }
 
-            .contact-section {
-                padding: 0px 20px 80px 20px;
-	        }
+    body {
+        padding-top: 0px;
+    }
 
-            .contact-section h1 {
-                margin-top: 4em;
-	        }
+    .contact-section {
+        padding: 90px 20px 80px 20px;
+        min-height: calc(100vh - 120px);
+    }
 
-            .contact-section p {
-                margin-top: 10px;
-                margin-bottom: 25px;
-            }
+    .contact-section h1 {
+        margin-top: 2em;
+    }
 
-            .email-button {
-                font-size: 1.2em;
-                padding: 10px 30px;
-                border-radius: 30px;
-                margin-top: 4px;
-            }
+    .contact-section p {
+        margin-top: 10px;
+        margin-bottom: 12px;
+    }
 
-            .igdm-button {
-                font-size: 1em;
-                padding: 6px 20px;
-                border-radius: 30px;
-                margin-top: 12px;
-            }
+    .email-button {
+        font-size: 1.2em;
+        padding: 10px 30px;
+        border-radius: 30px;
+        margin-top: 10px;
+    }
+
+    .igdm-button {
+        font-size: 1em;
+        padding: 6px 20px;
+        border-radius: 30px;
+        margin-top: 12px;
+    }
+}
 
             .portrait-image-container {
                 margin-top: 32px;
@@ -165,7 +174,6 @@
 	        .portrait-image {
 		        width: 290px;
 	        }
-        }
     </style>
 </head>
 
@@ -184,7 +192,7 @@
         <h1>Contact</h1>
         <p><b>We'd love to hear from you!</b></p>
          <p>If you have questions or business-related inquires, don't hesitate to reaching out!</p>
-	<div style="display: flex; flex-direction: column; align-items: center;">
+	<div style="display: flex; flex-direction: column; align-items: center;"></div>
         <a href="mailto:lbasho2@live.spcollege.edu">
             <button class="email-button">
                 <i class="fas fa-envelope"></i> Send Us An Email

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Rising Home Energy Bills</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+    body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background-color: #000;
+    color: #e0e0e0;
+
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+    .bg-parallax {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 110vh;
+
+        background-image: url('media/energy.jpg');
+        background-size: cover;
+        background-position: center;
+
+        transform: translateY(0);
+        will-change: transform;
+
+        opacity: 0;
+        transition: opacity 1.2s ease;
+
+        z-index: -1;
+    }
+
+    .page-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+    .bg-parallax.show {
+        opacity: 0.4;
+    }
+
+    .media-container {
+        text-align: left;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        min-height: 95vh;
+        padding: 0 10%;
+        opacity: 1;
+        transition: opacity 0.35s ease;
+    }
+
+    .media-container .media-text {
+        font-size: clamp(2.6rem, 5vw, 5rem);
+        font-weight: bold;
+        text-shadow: 2px 2px 12px rgba(0,0,0,0.8);
+    }
+
+    .media-container .media-subtext {
+        font-size: clamp(1rem, 1.6vw, 1.5rem);
+        margin-top: 10px;
+        max-width: 700px;
+        line-height: 1.6;
+        text-shadow: 1px 1px 6px rgba(0,0,0,0.7);
+    }
+
+    .media-text,
+    .media-subtext {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 1.2s ease, transform 1.2s ease;
+    }
+
+    .media-text.show,
+    .media-subtext.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .section {
+        padding: 100px 10%;
+        background: #121212;
+    }
+
+    .section:nth-child(even) {
+        background: #181818;
+    }
+
+    .section-container {
+        display: flex;
+        gap: 45px;
+        align-items: center;
+    }
+
+    .section-container img {
+        width: clamp(250px, 32vw, 450px);
+        border-radius: 18px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .section-text {
+        flex: 1;
+    }
+
+    .about-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+
+    padding: 120px 10%;
+    box-sizing: border-box;
+}
+    
+    
+    .about-container {
+        display: flex;
+        gap: clamp(20px, 3vw, 45px);
+        align-items: flex-start;
+    }
+    
+    .about-container img {
+        width: clamp(1020px, 48vw, 1020px);
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        opacity: 1;
+        transition: opacity 0.6s ease, transform 0.6s ease, visibility 0s linear 0.6s;
+        pointer-events: none;
+    }
+
+    .about-container img.fade-in {
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    
+    .about-text h2 {
+        opacity: 1;
+        font-size: 2.5em;
+        margin-bottom: 18px;
+    }
+    
+    .about-text p {
+        font-size: clamp(0.9rem, 1.1vw, 1rem);
+        opacity: 1;
+        line-height: 1.7;
+        margin-bottom: 18px;
+        transition: opacity 1.2s ease, transform 1.2s ease, visibility 0s linear 1.2s;
+    }
+
+    .section-text h2 {
+        font-size: clamp(2rem, 3vw, 3rem);
+        margin-bottom: 18px;
+
+        opacity: 1;
+        transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .section-text p {
+        font-size: clamp(0.95rem, 1.05vw, 1.05rem);
+        line-height: 1.9;
+        margin-bottom: 18px;
+
+        opacity: 1;
+        transition: opacity 1.2s ease, transform 1.2s ease;
+    }
+
+    .fade-in {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+    }
+
+    .stats-section {
+        padding: 90px 10%;
+        background: #0f0f0f;
+        text-align: center;
+    }
+
+    .stats-section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 50px;
+    }
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+
+    .stat-box {
+        background: #1a1a1a;
+        border-radius: 20px;
+        padding: 40px 30px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+    }
+
+    .stat-box i {
+        font-size: 2.4rem;
+        margin-bottom: 20px;
+        color: #6dbf73;
+    }
+
+    .stat-box h3 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+
+    .stat-box p {
+        line-height: 1.7;
+    }
+
+    .footer {
+        background: #0a0a0a;
+        padding: 50px 10%;
+        text-align: center;
+    }
+
+    .footer p {
+        color: #888;
+        line-height: 1.7;
+    }
+
+    @media(max-width: 1000px) {
+
+        .media-container {
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 70px 8%;
+        }
+
+        .section-container {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .section-container img {
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .stats-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .stats-section h2 {
+            font-size: 2rem;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="/" class="logo">Rising Home Energy Bills</a>
+
+        <div id="nav-placeholder"></div>
+
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <main class="page-content">
+    <section class="about-section">
+        <div class="about-container">
+
+            <div class="about-text">
+                <h2><b>About Us</b></h2>
+
+                <p>Rising Home Energy Bills is an informational project focused on increasing awareness surrounding the growing cost of household electricity in the United States. In recent years, many Americans have experienced noticeable increases in their monthly energy bills, creating financial strain for households nationwide. This website was created to explore the causes behind these rising costs and present practical solutions that individuals can apply in their everyday lives.</p>
+
+                <p>The purpose of this project is not only to discuss the issue itself, but also to encourage Americans to become more informed about how energy is used, where waste occurs, and what alternatives are available moving forward.</p>
+
+                <p><b>As awareness continues to grow, collective action toward energy efficiency and renewable energy adoption can help reduce both economic pressure and environmental impact for future generations.</b></p>
+            </div>
+        </div>
+    </section>
+</main>
+
+    <div id="footer-placeholder"></div>
+
+<script>
+window.addEventListener('load', function() {
+
+    document.querySelector('.bg-parallax').classList.add('show');
+
+    document.querySelector('.media-text').classList.add('show');
+
+    document.querySelector('.media-subtext').classList.add('show');
+
+    revealElements();
+});
+
+let ticking = false;
+
+window.addEventListener('scroll', function() {
+
+    if(!ticking){
+
+        window.requestAnimationFrame(function(){
+
+            const bg = document.querySelector('.bg-parallax');
+            const hero = document.querySelector('.media-container');
+
+            let speed = window.innerWidth <= 1000 ? 0 : 0.25;
+
+            bg.style.transform =
+                "translateY(" + (scrollY * -speed) + "px)";
+
+            const fadeDistance =
+                window.innerHeight * 0.35;
+
+            const opacity =
+                Math.max(0, 1 - (scrollY / fadeDistance));
+
+            hero.style.opacity = opacity;
+
+            revealElements();
+
+            ticking = false;
+        });
+
+        ticking = true;
+    }
+});
+
+function revealElements(){
+
+    const elements =
+        document.querySelectorAll('.fade-target');
+
+    elements.forEach(function(el){
+
+        const rect = el.getBoundingClientRect();
+
+        if(rect.top < window.innerHeight * 0.9){
+
+            el.classList.add('fade-in');
+        }
+    });
+}
+</script>
+<script src="../js/site.js"></script>
+
+</body>
+</html>
